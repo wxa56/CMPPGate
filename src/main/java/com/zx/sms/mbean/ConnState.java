@@ -2,7 +2,7 @@ package com.zx.sms.mbean;
 
 import io.netty.channel.Channel;
 
-import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -18,7 +18,7 @@ public class ConnState implements ConnStateMBean {
 		 StringBuilder sb = new StringBuilder();
 		EndpointManager em = EndpointManager.INS;
 		if(StringUtils.isEmpty(entityId)){
-			List<EndpointEntity> enlist = em.allEndPointEntity();
+			Set<EndpointEntity> enlist = em.allEndPointEntity();
 			for(EndpointEntity e : enlist){
 				sb.append(e.getId()+":\n");
 				sb.append(printOne(e));
@@ -36,6 +36,9 @@ public class ConnState implements ConnStateMBean {
 	private String printOne(EndpointEntity e){
 		 StringBuilder sb = new StringBuilder();
 		EndpointConnector econn = EndpointManager.INS.getEndpointConnector(e);
+		
+		if(econn == null) return ""; 
+			
 		 Channel[] carr = econn.getallChannel();
 		 if(carr!=null && carr.length>0){
 			 

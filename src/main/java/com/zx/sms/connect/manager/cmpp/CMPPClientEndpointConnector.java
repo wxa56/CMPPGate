@@ -7,7 +7,6 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 import io.netty.util.concurrent.GenericFutureListener;
 
@@ -76,7 +75,7 @@ public class CMPPClientEndpointConnector extends AbstractEndpointConnector {
 	protected SslContext createSslCtx() {
 	
 		try{
-			return SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+			return SslContext.newClientContext(InsecureTrustManagerFactory.INSTANCE);
 		}catch(Exception ex){
 			ex.printStackTrace();
 			return null;

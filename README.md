@@ -1,5 +1,5 @@
 # CMPPGate
-中移短信cmpp协议netty实现编解码
+中移短信cmpp协议netty实现编解码 wxa
 
 这是一个在netty4框架下实现的cmpp3.0/cmpp2.0短信协议解析及网关端口管理 (master分支是依赖于netty5的)。
 代码copy了 `huzorro@gmail.com` 基于netty3.7的cmpp协议解析 [huzorro@gmail.com 的代码 ](https://github.com/huzorro/netty3ext)
